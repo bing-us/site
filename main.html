@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>　　</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(160deg, #ff71ce 0%, #01cdfe 30%, #b967ff 70%, #01cdfe 100%);
+      font-family: 'VT323', monospace;
+      color: #fff;
+      image-rendering: pixelated;
+      background-size: 300% 300%;
+      animation: vaporFlow 24s ease infinite;
+    }
+
+    @keyframes vaporFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(
+          45deg,
+          transparent 0,
+          transparent 20px,
+          rgba(255,255,255,0.06) 20px,
+          rgba(255,255,255,0.06) 40px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent 0,
+          transparent 30px,
+          rgba(0,0,0,0.04) 30px,
+          rgba(0,0,0,0.04) 60px
+        );
+      pointer-events: none;
+      animation: gridDrift 80s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      to { background-position: 400px 400px; }
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(5rem, 22vw, 18rem);
+      line-height: 0.82;
+      text-align: center;
+      letter-spacing: -0.12em;
+      color: #00ffff;
+      text-shadow: 
+        0 0 8px  #ff00aa,
+        0 0 16px #ff00aa,
+        0 0 32px #ff00aa,
+        6px 6px 0 #000,
+        -6px -6px 0 #000,
+        12px 12px 0 #000;
+      transform: skew(-10deg, 4deg);
+      animation: glitch-vapor 3.5s infinite;
+      user-select: none;
+    }
+
+    @keyframes glitch-vapor {
+      0%   { text-shadow: 4px 4px #ff00ff, -4px -4px #00ffff; transform: skew(-10deg, 4deg); }
+      4%   { text-shadow: -5px 3px #00ffff, 5px -3px #ff00ff; }
+      8%   { text-shadow: 6px -2px #ff69b4, -6px 2px #00ffff; }
+      12%  { text-shadow: -3px 5px #01cdfe, 3px -5px #ff71ce; }
+      100% { text-shadow: 4px 4px #ff00ff, -4px -4px #00ffff; transform: skew(-10deg, 4deg); }
+    }
+
+    .palm {
+      position: absolute;
+      font-size: 18rem;
+      opacity: 0.22;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 0 20px #ff00aa);
+    }
+
+    .palm-l { bottom: -6rem; left: -8rem; transform: rotate(-18deg); }
+    .palm-r { bottom: -7rem; right: -9rem; transform: rotate(22deg); }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      animation: scanline 12s linear infinite;
+    }
+
+    @keyframes scanline {
+      0%   { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .scan {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(255,105,180,0.15), transparent);
+      pointer-events: none;
+      animation: scanGlow 5s ease-in-out infinite;
+    }
+
+    @keyframes scanGlow {
+      0%,100% { top: -100%; }
+      50%     { top: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-overlay"></div>
+  <div class="scan"></div>
+
+  <div class="container">
+    <div class="palm palm-l">🌴</div>
+    <div class="palm palm-r">🌴</div>
+
+    <h1>WORK<br>IN<br>PROGRESS</h1>
+  </div>
+
+</body>
+</html>
